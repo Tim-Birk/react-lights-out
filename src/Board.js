@@ -86,24 +86,26 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.25 }) {
     return <div>Winner Winner!</div>;
   }
 
+  const boardRows = () => {
+    return board.map((r, rowIdx) => (
+      <tr key={rowIdx}>
+        {r.map((c, colIdx) => (
+          <Cell
+            key={`${rowIdx}-${colIdx}`}
+            coords={`${rowIdx}-${colIdx}`}
+            flipCellsAroundMe={flipCellsAround}
+            isLit={c}
+          />
+        ))}
+      </tr>
+    ));
+  };
+
   return (
     // if the game is won, just show a winning msg & render nothing else
 
     <table className='Board'>
-      <tbody>
-        {board.map((r, rowIdx) => (
-          <tr key={rowIdx}>
-            {r.map((c, colIdx) => (
-              <Cell
-                key={`${rowIdx}-${colIdx}`}
-                coords={`${rowIdx}-${colIdx}`}
-                flipCellsAroundMe={flipCellsAround}
-                isLit={c}
-              />
-            ))}
-          </tr>
-        ))}
-      </tbody>
+      <tbody>{boardRows()}</tbody>
     </table>
   );
 }
