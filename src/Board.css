@@ -1,3 +1,15 @@
 .Board {
   margin: 0 auto;
+  background-color: rgb(0, 40, 219);
+  padding: 10px;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.lit {
+  background-color: rgb(250, 134, 250);
+}
+
+.empty {
+  background-color: #fff;
 }
